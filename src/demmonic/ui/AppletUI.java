@@ -20,7 +20,7 @@ public class AppletUI {
 		mainFrame = new JFrame();
 		mainPanel = new JPanel();
 		
-		mainFrame.setTitle("DemmClient");
+		mainFrame.setTitle("Reflection Wrapper");
 		mainFrame.setContentPane(mainPanel);
 		mainFrame.setResizable(false);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
