@@ -29,7 +29,6 @@ public class ByteClassLoader extends ClassLoader {
 	 * 			The contents of the class (or data)
 	 */
 	public void addClass(String name, byte[] contents) {
-		System.out.println("added " + name);
 		classes.put(name, contents);
 	}
 	
