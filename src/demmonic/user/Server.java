@@ -25,6 +25,7 @@ public abstract class Server {
 	
 	/**
 	 * @param loader
+	 * 			This server's new class loader
 	 */
 	public void set(ByteClassLoader loader) {
 		this.loader = loader;
@@ -32,6 +33,7 @@ public abstract class Server {
 	
 	/**
 	 * @param c
+	 * 			The command to add
 	 */
 	public final void add(Command c) {
 		commands.add(c);
@@ -39,6 +41,7 @@ public abstract class Server {
 	
 	/**
 	 * @param name
+	 * 			The class to search for
 	 * @return The class matching the provided name
 	 */
 	public final ReflectionClass get(String name) {
@@ -82,6 +85,9 @@ public abstract class Server {
 	 */
 	public abstract ReflectionClass getMainClass();
 	
+	/**
+	 * @return This server's applet stub
+	 */
 	public AppletStub getStub() {
 		return null;
 	}

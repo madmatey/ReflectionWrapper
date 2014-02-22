@@ -44,7 +44,7 @@ public class Loader {
 	}
 	
 	/**
-	 * @param mainClass
+	 * Starts the loader
 	 */
 	public void start() {
 		for (Command c : loadedServer.getCommands()) {

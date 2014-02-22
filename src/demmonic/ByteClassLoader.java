@@ -18,6 +18,9 @@ import java.util.HashMap;
  */
 public class ByteClassLoader extends ClassLoader {
 	
+	/**
+	 * Class loader contents
+	 */
 	private HashMap<String, byte[]> classes = new HashMap<String, byte[]>();
 	private HashMap<String, byte[]> resources = new HashMap<String, byte[]>();
 	
@@ -113,11 +116,17 @@ public class ByteClassLoader extends ClassLoader {
 		}
 	}
 	
+	/**
+	 * @return This class loader's protection domain
+	 */
 	private ProtectionDomain getDomain() {
 		CodeSource code = new CodeSource(null, (Certificate[]) null);
 		return new ProtectionDomain(code, getPermissions());
 	}
 
+	/**
+	 * @return This class loader's permissions
+	 */
 	private Permissions getPermissions() {
 		Permissions permissions = new Permissions();
 		permissions.add(new AllPermission());

@@ -7,10 +7,14 @@ package demmonic;
  */
 public abstract class Command {
 
+	/**
+	 * This command's identifier
+	 */
 	private String identifier;
 
 	/**
 	 * @param identifier
+	 * 			This command's identifier
 	 */
 	public Command(String identifier) {
 		this.identifier = identifier;
@@ -25,6 +29,7 @@ public abstract class Command {
 	
 	/**
 	 * @param input
+	 * 			The input to parse
 	 */
 	public abstract void parse(String input);
 	

@@ -15,6 +15,7 @@ public class CommandHandler {
 	
 	/**
 	 * @param c
+	 * 			The command to add
 	 */
 	public static void add(Command c) {
 		commands.add(c);
@@ -23,6 +24,7 @@ public class CommandHandler {
 	/**
 	 * Parses the input for commands
 	 * @param input
+	 * 			The input to parse
 	 */
 	public static void parse(String input) {
 		if (input.split(" ").length <= 0)

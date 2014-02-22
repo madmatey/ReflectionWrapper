@@ -56,6 +56,7 @@ public class IOUtil {
 	
 	/**
 	 * @param in
+	 * 			The input stream to parse
 	 * @return Class loader parsed from provided jar
 	 */
 	public static ByteClassLoader parseJar(JarInputStream in) {
