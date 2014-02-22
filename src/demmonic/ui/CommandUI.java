@@ -46,11 +46,11 @@ public class CommandUI {
 		historyScrollPane = new JScrollPane(historyTextArea);
 		inputTextField = new JTextField();
 		
-		mainFrame.setTitle("Command handler");
-		mainFrame.setContentPane(mainPanel);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		mainFrame.setBounds(100, 100, 450, 315);
 		mainFrame.setResizable(false);
+		mainFrame.setContentPane(mainPanel);
+		mainFrame.setTitle("Command handler");
 		
 		mainPanel.setLayout(null);
 		
@@ -97,10 +97,15 @@ public class CommandUI {
 	/**
 	 * Sets our command UI to visible
 	 */
-	public static void setVisible() {
+	public static void initialize() {
 		initializeComponents();
 		addListeners();
-		
+	}
+	
+	/**
+	 * Opens the main frame
+	 */
+	public static void open() {
 		mainFrame.setVisible(true);
 	}
 	

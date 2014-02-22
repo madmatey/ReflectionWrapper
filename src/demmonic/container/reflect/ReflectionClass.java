@@ -2,6 +2,7 @@ package demmonic.container.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -85,6 +86,13 @@ public class ReflectionClass {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * @return All reflection fields beloning to this class
+	 */
+	public Collection<ReflectionField> getFields() {
+		return fields;
 	}
 	
 	/**

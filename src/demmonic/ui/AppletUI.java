@@ -20,10 +20,11 @@ public class AppletUI {
 		mainFrame = new JFrame();
 		mainPanel = new JPanel();
 		
-		mainFrame.setTitle("Reflection Wrapper");
-		mainFrame.setContentPane(mainPanel);
-		mainFrame.setResizable(false);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainFrame.setResizable(false);
+		mainFrame.setContentPane(mainPanel);
+		mainFrame.setJMenuBar(AppletMenuBar.get());
+		mainFrame.setTitle("Reflection Wrapper");
 		
 		mainPanel.setLayout(null);
 		mainPanel.setPreferredSize(new Dimension(765, 503));

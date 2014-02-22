@@ -32,7 +32,7 @@ public class Loader {
 	 * 			The server to load
 	 */
 	public Loader(Server server) {
-		CommandUI.setVisible();
+		CommandUI.initialize();
 		loadedServer = server;
 		
 		try {
