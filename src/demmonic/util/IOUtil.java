@@ -65,15 +65,15 @@ public class IOUtil {
 			ZipEntry e;
 			while ((e = in.getNextEntry()) != null) {
 				ByteArrayOutputStream byteStore = new ByteArrayOutputStream();
-				
-				byte buffer[] = new byte[(int)e.getSize()];
+
+				byte buffer[] = new byte[4096];
 				int length;
 				while ((length = in.read(buffer)) != -1) {
 					byteStore.write(buffer, 0, length);
 				}
 				
 				if (e.getName().endsWith(".class")) {
-					loader.addClass(e.getName(), byteStore.toByteArray());
+					loader.addClass(e.getName().replace(".class", "").replace("/", "."), byteStore.toByteArray());
 				} else {
 					loader.addResource(e.getName(), byteStore.toByteArray());
 				}

@@ -26,7 +26,7 @@ public class AppletUI {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		mainPanel.setLayout(null);
-		mainPanel.setPreferredSize(new Dimension(765, 557));
+		mainPanel.setPreferredSize(new Dimension(765, 503));
 		
 		mainFrame.pack();
 	}
@@ -36,7 +36,7 @@ public class AppletUI {
 	 * 			The applet to start
 	 */
 	public static void start(Applet applet) {
-		applet.setBounds(0, 0, 765, 557);
+		applet.setBounds(0, 0, 765, 503);
 		mainPanel.add(applet);
 		
 		applet.init();

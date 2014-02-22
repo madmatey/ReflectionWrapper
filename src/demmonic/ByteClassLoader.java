@@ -18,7 +18,7 @@ import java.util.HashMap;
  */
 public class ByteClassLoader extends ClassLoader {
 	
-	private HashMap<String, byte[]> classNodes = new HashMap<String, byte[]>();
+	private HashMap<String, byte[]> classes = new HashMap<String, byte[]>();
 	private HashMap<String, byte[]> resources = new HashMap<String, byte[]>();
 	
 	/**
@@ -29,18 +29,19 @@ public class ByteClassLoader extends ClassLoader {
 	 * 			The contents of the class (or data)
 	 */
 	public void addClass(String name, byte[] contents) {
-		classNodes.put(name, contents);
+		System.out.println("added " + name);
+		classes.put(name, contents);
 	}
 	
 	/**
 	 * Adds the provided resource to the class loader
-	 * @param resourceName
+	 * @param bame
 	 * 			The name of the resource
 	 * @param contents
 	 * 			The contents of the resource (or data)
 	 */
-	public void addResource(String resourceName, byte[] contents) {
-		resources.put(resourceName, contents);
+	public void addResource(String bame, byte[] contents) {
+		resources.put(bame, contents);
 	}
 	
 	/**
@@ -49,21 +50,21 @@ public class ByteClassLoader extends ClassLoader {
 	 * @return If this class loader contains the provided class node
 	 */
 	public boolean contains(String name) {
-		return (classNodes.get(name) != null);
+		return (classes.get(name) != null);
 	}
 	
 	/**
 	 * @return All class nodes in this loader
 	 */
 	public Collection<byte[]> getAll() {
-		return classNodes.values();
+		return classes.values();
 	}
 	
 	/**
 	 * Clears out all class nodes
 	 */
 	public void clear() {
-		classNodes.clear();
+		classes.clear();
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class ByteClassLoader extends ClassLoader {
 	 */
 	public Collection<Class<?>> getAllClasses() {
 		ArrayList<Class<?>> classes = new ArrayList<Class<?>>();
-		for (String s : classNodes.keySet()) {
+		for (String s : this.classes.keySet()) {
 			try {
 				classes.add(loadClass(s));
 			} catch (ClassNotFoundException e) {
@@ -88,7 +89,7 @@ public class ByteClassLoader extends ClassLoader {
 	 * @return The class node with the provided name
 	 */
 	public byte[] get(String name) {
-		return classNodes.get(name);
+		return classes.get(name);
 	}
 	
 	@Override
@@ -105,11 +106,11 @@ public class ByteClassLoader extends ClassLoader {
 	}
 	
 	@Override
-	public Class<?> findClass(String className) throws ClassNotFoundException {
-		if (classNodes.containsKey(className.replace(".", "/"))) {
-			return defineClass(className, classNodes.get(className), 0, classNodes.get(className).length, getDomain());
+	public Class<?> findClass(String name) throws ClassNotFoundException {
+		if (classes.containsKey(name)) {
+			return defineClass(name, classes.get(name), 0, classes.get(name).length, getDomain());
 		} else {
-			return super.loadClass(className);
+			return super.loadClass(name);
 		}
 	}
 	
