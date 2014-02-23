@@ -37,26 +37,6 @@ public class ReflectionMethod {
 	
 	/**
 	 * Invokes this method with the provided parameters
-	 * @param instance
-	 * @param params
-	 */
-	/*public void invoke(Object instance, Object... params) {
-		if (!method.isAccessible())
-			method.setAccessible(true);
-		
-		try {
-			method.invoke(instance, params);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-	}*/
-	
-	/**
-	 * Invokes this method with the provided parameters
 	 * @param params
 	 */
 	public void invoke(Object... params) {
