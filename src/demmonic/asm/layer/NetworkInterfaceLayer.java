@@ -22,11 +22,9 @@ public class NetworkInterfaceLayer {
 	}
 	
 	/**
-	 * @return Random "mac-address"
+	 * @return A random "mac-address"
 	 */
 	public byte[] getHardwareAddress() {
-		System.out.println("attempting to grab mac lel");
-		
 		byte[] random = new byte[8];
 		for (int i = 0; i < 8; i++) {
 			random[i] = (byte) rand.nextInt(128);
