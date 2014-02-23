@@ -16,7 +16,7 @@ public class GetOpenInterfaceCommand extends Command {
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
 		Object instance = Loader.getClientInstance();
 		
-		CommandUI.push("open interface: " + client.getField("cL", "int").getValue(instance));
+		CommandUI.push("open interface: " + client.getField("cL", "int").getValue());
 	}
 
 	@Override

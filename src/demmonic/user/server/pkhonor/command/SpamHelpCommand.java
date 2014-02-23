@@ -14,10 +14,9 @@ public class SpamHelpCommand extends Command {
 	@Override
 	public void parse(String input) {
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-		Object instance = Loader.getClientInstance();
-		
+
 		ReflectionClass bufferClass = client.getField("ao", "pkhonor.dt").getType();
-		Object outBuffer = client.getField("ao", "pkhonor.dt").getValue(instance);
+		Object outBuffer = client.getField("ao", "pkhonor.dt").getValue();
 		
 		if (outBuffer != null && bufferClass != null) {
 			ReflectionMethod putOpcodeMethod = bufferClass.getMethod("a", int.class);

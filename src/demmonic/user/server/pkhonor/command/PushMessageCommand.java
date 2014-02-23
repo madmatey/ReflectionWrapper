@@ -21,7 +21,7 @@ public class PushMessageCommand extends Command {
 		String message = input.split(" ")[1].replace("_", " ");
 		
 		if (method != null) {
-			method.invoke(instance, message, 0, "");
+			method.invoke(message, 0, "");
 		}
 	}
 

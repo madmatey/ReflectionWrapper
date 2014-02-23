@@ -14,9 +14,8 @@ public class GetChatboxInterfaceCommand extends Command {
 	@Override
 	public void parse(String input) {
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-		Object instance = Loader.getClientInstance();
-		
-		CommandUI.push("open interface: " + client.getField("jm", "int").getValue(instance));
+
+		CommandUI.push("open interface: " + client.getField("jm", "int").getValue());
 	}
 
 	@Override

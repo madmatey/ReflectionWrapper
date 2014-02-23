@@ -47,7 +47,7 @@ public abstract class Server {
 	public final ReflectionClass get(String name) {
 		if (classes.get(name) == null) {
 			try {
-				ReflectionClass c = new ReflectionClass(loader.loadClass(name));
+				ReflectionClass c = new ReflectionClass(loader.loadClass(name), isLoaded() && getMainClass().getName().equals(name) ? getClientInstance() : null);
 				classes.put(c.getName(), c);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -62,6 +62,13 @@ public abstract class Server {
 	 */
 	public final Collection<Command> getCommands() {
 		return commands;
+	}
+	
+	/**
+	 * @return If this server has been loaded
+	 */
+	public final boolean isLoaded() {
+		return clientInstance != null;
 	}
 	
 	/**

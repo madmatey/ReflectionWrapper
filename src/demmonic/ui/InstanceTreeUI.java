@@ -84,7 +84,6 @@ public class InstanceTreeUI {
 	/**
 	 * Represents the tree's right click handler
 	 * @author Demmonic
-	 *
 	 */
 	private static class NodeListener extends MouseAdapter {
 		
@@ -104,7 +103,6 @@ public class InstanceTreeUI {
 	/**
 	 * Represents the node menu's load listener
 	 * @author Demmonic
-	 *
 	 */
 	private static class LoadListener implements ActionListener {
 
@@ -118,10 +116,10 @@ public class InstanceTreeUI {
 					if (n.getChildCount() > 0) return;
 					
 					Object instance = n.getInstance();
-					ReflectionClass c = new ReflectionClass(instance.getClass());
+					ReflectionClass c = new ReflectionClass(instance.getClass(), instance);
 					
 					for (ReflectionField f : c.getFields()) {
-						Object value = f.getValue(instance);
+						Object value = f.getValue();
 						if (value != null) {
 							n.add(new InstanceTreeNode(f.getName(), f.getName() + " - " + value, value));
 						}
@@ -148,10 +146,10 @@ public class InstanceTreeUI {
 					InstanceTreeNode n = (InstanceTreeNode) o;
 					
 					Object instance = n.getInstance();
-					ReflectionClass c = new ReflectionClass(instance.getClass());
+					ReflectionClass c = new ReflectionClass(instance.getClass(), instance);
 					
 					for (ReflectionField f : c.getFields()) {
-						Object value = f.getValue(instance);
+						Object value = f.getValue();
 						InstanceTreeNode present = n.getChild(f.getName());
 						if (present != null) {
 							present.setUserObject(f.getName() + " - " + value);

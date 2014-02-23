@@ -15,9 +15,8 @@ public class SetUsernameCommand extends Command {
 		String username = input.split(" ")[1];
 		
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-		Object instance = Loader.getClientInstance();
-		
-		client.getField("hG", "java.lang.String").setValue(instance, username);
+
+		client.getField("hG", "java.lang.String").setValue(username);
 	}
 
 	@Override

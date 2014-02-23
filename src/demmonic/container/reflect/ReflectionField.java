@@ -9,14 +9,19 @@ import java.lang.reflect.Field;
  */
 public class ReflectionField {
 
+	private ReflectionClass owner;
 	private Field field;
 	private Class<?> type;
 	private ReflectionClass typeCache;
 	
 	/**
+	 * @param owner
+	 * 			This field's owner
 	 * @param field
+	 * 			The field to store
 	 */
-	public ReflectionField(Field field) {
+	public ReflectionField(ReflectionClass owner, Field field) {
+		this.owner = owner;
 		this.field = field;
 		this.type = field.getType();
 	}
@@ -33,7 +38,7 @@ public class ReflectionField {
 	 */
 	public ReflectionClass getType() {
 		if (typeCache == null) {
-			typeCache = new ReflectionClass(type);
+			typeCache = new ReflectionClass(type, getValue());
 		}
 		return typeCache;
 	}
@@ -46,15 +51,14 @@ public class ReflectionField {
 	}
 	
 	/**
-	 * @param o
-	 * @return The value in this field
+	 * @return This field's value
 	 */
-	public Object getValue(Object instance) {
+	public Object getValue() {
 		if (!field.isAccessible())
 			field.setAccessible(true);
 		
 		try {
-			return field.get(instance);
+			return field.get(owner.getInstance());
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -65,15 +69,15 @@ public class ReflectionField {
 	}
 	
 	/**
-	 * @param instance
 	 * @param newValue
+	 * 			The value to store in this field
 	 */
-	public void setValue(Object instance, Object newValue) {
+	public void setValue(Object newValue) {
 		if (!field.isAccessible())
 			field.setAccessible(true);
 		
 		try {
-			field.set(instance, newValue);
+			field.set(owner.getInstance(), newValue);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

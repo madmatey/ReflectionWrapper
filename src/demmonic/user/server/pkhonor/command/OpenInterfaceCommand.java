@@ -20,9 +20,8 @@ public class OpenInterfaceCommand extends Command {
 		int id = Integer.parseInt(input.split(" ")[1]);
 		
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-		Object instance = Loader.getClientInstance();
-		
-		client.getField("cL", "int").setValue(instance, id);
+
+		client.getField("cL", "int").setValue(id);
 	}
 
 	@Override

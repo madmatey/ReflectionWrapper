@@ -21,16 +21,20 @@ public class ReflectionClass {
 	
 	/**
 	 * @param c
+	 * 			Instance type class
+	 * @param instance
+	 * 			Instance to store
 	 */
-	public ReflectionClass(Class<?> c) {
+	public ReflectionClass(Class<?> c, Object instance) {
 		this.clazz = c;
+		this.cached = instance;
 		
 		for (Method m : c.getDeclaredMethods()) {
-			addMethod(new ReflectionMethod(m));
+			addMethod(new ReflectionMethod(this, m));
 		}
 		
 		for (Field f : c.getDeclaredFields()) {
-			addField(new ReflectionField(f));
+			addField(new ReflectionField(this, f));
 		}
 	}
 	
@@ -38,7 +42,7 @@ public class ReflectionClass {
 	 * @return This class's super class
 	 */
 	public ReflectionClass getSuper() {
-		return new ReflectionClass(clazz.getSuperclass());
+		return new ReflectionClass(clazz.getSuperclass(), cached);
 	}
 	
 	/**
@@ -65,6 +69,7 @@ public class ReflectionClass {
 	
 	/**
 	 * @param f
+	 * 			The field to add
 	 */
 	public void addField(ReflectionField f) {
 		fields.add(f);
@@ -72,6 +77,9 @@ public class ReflectionClass {
 	
 	/**
 	 * @param name
+	 * 			The name to search for
+	 * @param type
+	 * 			The type to search for
 	 * @return The field with the provided name
 	 */
 	public ReflectionField getField(String name, String type) {
@@ -97,6 +105,7 @@ public class ReflectionClass {
 	
 	/**
 	 * @param m
+	 * 			The method to add
 	 */
 	public void addMethod(ReflectionMethod m) {
 		methods.add(m);
@@ -104,6 +113,9 @@ public class ReflectionClass {
 	
 	/**
 	 * @param name
+	 * 			The name to search for
+	 * @param parameters
+	 * 			The parameters to search for
 	 * @return The method with the provided name
 	 */
 	public ReflectionMethod getMethod(String name, Object... parameters) {

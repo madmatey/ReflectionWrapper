@@ -10,12 +10,14 @@ import java.lang.reflect.Method;
  */
 public class ReflectionMethod {
 
+	private ReflectionClass owner;
 	private Method method;
 	
 	/**
 	 * @param method
 	 */
-	public ReflectionMethod(Method method) {
+	public ReflectionMethod(ReflectionClass owner, Method method) {
+		this.owner = owner;
 		this.method = method;
 	}
 	
@@ -38,7 +40,7 @@ public class ReflectionMethod {
 	 * @param instance
 	 * @param params
 	 */
-	public void invoke(Object instance, Object... params) {
+	/*public void invoke(Object instance, Object... params) {
 		if (!method.isAccessible())
 			method.setAccessible(true);
 		
@@ -51,5 +53,25 @@ public class ReflectionMethod {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
+	}*/
+	
+	/**
+	 * Invokes this method with the provided parameters
+	 * @param params
+	 */
+	public void invoke(Object... params) {
+		if (!method.isAccessible())
+			method.setAccessible(true);
+		
+		try {
+			method.invoke(owner.getInstance(), params);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 	}
+	
 }
