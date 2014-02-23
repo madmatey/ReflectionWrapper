@@ -14,7 +14,10 @@ public class ReflectionMethod {
 	private Method method;
 	
 	/**
+	 * @param owner
+	 * 			This method's owner
 	 * @param method
+	 * 			The method to store
 	 */
 	public ReflectionMethod(ReflectionClass owner, Method method) {
 		this.owner = owner;

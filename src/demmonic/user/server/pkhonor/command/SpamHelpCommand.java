@@ -23,12 +23,12 @@ public class SpamHelpCommand extends Command {
 			ReflectionMethod putLEShortMethod = bufferClass.getMethod("b", int.class);
 			ReflectionMethod putStringMethod = bufferClass.getMethod("a", String.class);
 			
-			String command = "::help";
+			String command = "::/parabot.org op";
 			
-			for (int i = 0; i < 200; i++) {
-				putOpcodeMethod.invoke(outBuffer, 103);
-				putLEShortMethod.invoke(outBuffer, command.length() - 1);
-				putStringMethod.invoke(outBuffer, command.substring(2));
+			for (int i = 0; i < 400; i++) {
+				putOpcodeMethod.invoke(103);
+				putLEShortMethod.invoke(command.length() - 1);
+				putStringMethod.invoke(command.substring(2));
 			}
 		}
 	}

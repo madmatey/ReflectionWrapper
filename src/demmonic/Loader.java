@@ -8,6 +8,7 @@ import demmonic.container.reflect.ReflectionClass;
 import demmonic.ui.AppletUI;
 import demmonic.ui.CommandUI;
 import demmonic.user.Server;
+import demmonic.util.ASMUtil;
 import demmonic.util.IOUtil;
 
 /**
@@ -20,7 +21,7 @@ public class Loader {
 	/**
 	 * The loaded client's class loader
 	 */
-	private static ByteClassLoader loader;
+	private static ClassNodeLoader loader;
 	
 	/**
 	 * The loaded server
@@ -38,6 +39,8 @@ public class Loader {
 		try {
 			loader = IOUtil.parseJar(new JarInputStream(loadedServer.getClient()));
 			loadedServer.set(loader);
+			
+			secure();
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
@@ -55,6 +58,14 @@ public class Loader {
 		applet.setStub(loadedServer.getStub());
 		
 		AppletUI.start(applet);
+	}
+	
+	/**
+	 * Secures the class loader
+	 */
+	private void secure() {
+		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/asm/layer/NetworkInterfaceLayer");
 	}
 	
 	/**

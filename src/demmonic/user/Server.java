@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import demmonic.ByteClassLoader;
+import demmonic.ClassNodeLoader;
 import demmonic.Command;
 import demmonic.container.reflect.ReflectionClass;
 
@@ -17,7 +17,7 @@ import demmonic.container.reflect.ReflectionClass;
  */
 public abstract class Server {
 
-	private ByteClassLoader loader;
+	private ClassNodeLoader loader;
 	private HashMap<String, ReflectionClass> classes = new HashMap<String, ReflectionClass>();
 	
 	private Object clientInstance;
@@ -27,7 +27,7 @@ public abstract class Server {
 	 * @param loader
 	 * 			This server's new class loader
 	 */
-	public void set(ByteClassLoader loader) {
+	public void set(ClassNodeLoader loader) {
 		this.loader = loader;
 	}
 	
