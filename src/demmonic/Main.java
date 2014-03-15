@@ -1,6 +1,8 @@
 package demmonic;
 
-import demmonic.user.server.pkhonor.PKHonorServer;
+import javax.swing.UIManager;
+
+import demmonic.user.server.destructivex.DestructiveServer;
 
 /**
  * 
@@ -9,8 +11,16 @@ import demmonic.user.server.pkhonor.PKHonorServer;
  */
 public class Main {
 
+	static {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
-		new Loader(new PKHonorServer()).start();
+		new Loader(new DestructiveServer()).start();
 	}
 	
 }

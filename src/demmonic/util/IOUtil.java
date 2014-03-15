@@ -2,14 +2,18 @@ package demmonic.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
+import java.util.jar.JarOutputStream;
 import java.util.zip.ZipEntry;
 
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
 import demmonic.ClassNodeLoader;
@@ -93,6 +97,30 @@ public class IOUtil {
 		}
 		
 		return loader;
+	}
+	
+	/**
+	 * @param loader
+	 * 			The class loader to save
+	 * @param path
+	 * 			The path to save the jar at
+	 */
+	public static void save(ClassNodeLoader loader, String path) {
+		try {
+			JarOutputStream out = new JarOutputStream(new FileOutputStream(path));
+			for (ClassNode cn : loader.getAll()) {
+				ClassWriter cw = new ClassWriter(0);
+				cn.accept(cw);
+				
+				out.putNextEntry(new ZipEntry(cn.name + ".class"));
+				out.write(cw.toByteArray());
+				out.closeEntry();
+			}
+			
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

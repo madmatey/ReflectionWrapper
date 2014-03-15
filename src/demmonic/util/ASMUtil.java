@@ -29,7 +29,9 @@ public class ASMUtil {
 			for (AbstractInsnNode ain : mn.instructions.toArray()) {
 				if (ain instanceof TypeInsnNode) {
 					TypeInsnNode tin = (TypeInsnNode) ain;
-					tin.desc = tin.desc.replace(from, to);
+					if (tin.desc.equals(from)) {
+						tin.desc = to;
+					}
 				} else if (ain instanceof MethodInsnNode) {
 					MethodInsnNode min = (MethodInsnNode) ain;
 					if (min.owner.equals(from)) {
@@ -38,6 +40,9 @@ public class ASMUtil {
 					min.desc = min.desc.replace("L" + from + ";", "L" + to + ";");
 				} else if (ain instanceof FieldInsnNode) {
 					FieldInsnNode fin = (FieldInsnNode) ain;
+					if (fin.owner.equals(from)) {
+						fin.owner = to;
+					}
 					fin.desc = fin.desc.replace("L" + from + ";", "L" + to + ";");
 				}
 			}

@@ -14,7 +14,6 @@ public class PushMessageCommand extends Command {
 	@Override
 	public void parse(String input) {
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-		Object instance = Loader.getClientInstance();
 		
 		ReflectionMethod method = client.getMethod("a", String.class, int.class, String.class);
 		

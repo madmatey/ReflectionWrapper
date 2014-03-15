@@ -12,17 +12,15 @@ import javax.swing.JMenuItem;
  * @author Demmonic
  *
  */
-public class AppletMenuBar {
+public class AppletMenuBar extends JMenuBar {
 
-	private static JMenuBar bar;
+	private static final long serialVersionUID = 1528750029294526866L;
 	
 	private static JMenu viewMenu;
 	private static JMenuItem consoleMenuItem;
 	private static JMenuItem explorerMenuItem;
 	
-	static {
-		bar = new JMenuBar();
-		
+	public AppletMenuBar() {
 		viewMenu = new JMenu("View");
 		consoleMenuItem = new JMenuItem("Console");
 		explorerMenuItem = new JMenuItem("Explorer");
@@ -30,7 +28,7 @@ public class AppletMenuBar {
 		viewMenu.add(consoleMenuItem);
 		viewMenu.add(explorerMenuItem);
 		
-		bar.add(viewMenu);
+		this.add(viewMenu);
 		
 		addListeners();
 	}
@@ -38,12 +36,12 @@ public class AppletMenuBar {
 	/**
 	 * Adds listeners to our UI components
 	 */
-	private static void addListeners() {
+	private void addListeners() {
 		consoleMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				CommandUI.open();
+				CommandUI.getInstance().setVisible(true);
 			}
 			
 		});
@@ -58,11 +56,13 @@ public class AppletMenuBar {
 		});
 	}
 	
+	private static AppletMenuBar barInterface;
+	
 	/**
-	 * @return Static instance
+	 * @return static instance
 	 */
-	public static JMenuBar get() {
-		return bar;
+	public static AppletMenuBar getInstance() {
+		return (barInterface == null ? (barInterface = new AppletMenuBar()) : barInterface);
 	}
 	
 }

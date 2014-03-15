@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
-
 import demmonic.CommandHandler;
 
 /**
@@ -18,39 +16,36 @@ import demmonic.CommandHandler;
  * @author Demmonic
  *
  */
-public class CommandUI {
+public class CommandUI extends JFrame {
 
-	private static JFrame mainFrame;
-	private static JPanel mainPanel;
+	private static final long serialVersionUID = 6061578507543986183L;
 	
-	private static JScrollPane historyScrollPane;
-	private static JTextArea historyTextArea;
-	private static JTextField inputTextField;
+	private JPanel mainPanel;
 	
-	static {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private JScrollPane historyScrollPane;
+	private JTextArea historyTextArea;
+	private JTextField inputTextField;
+	
+	public CommandUI() {
+		initializeComponents();
+		addListeners();
 	}
 	
 	/**
 	 * Initializes our UI components
 	 */
-	private static void initializeComponents() {
-		mainFrame = new JFrame();
+	private void initializeComponents() {
 		mainPanel = new JPanel();
 		
-		historyTextArea = new JTextArea();
+		this.historyTextArea = new JTextArea();
 		historyScrollPane = new JScrollPane(historyTextArea);
 		inputTextField = new JTextField();
 		
-		mainFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		mainFrame.setBounds(100, 100, 450, 315);
-		mainFrame.setResizable(false);
-		mainFrame.setContentPane(mainPanel);
-		mainFrame.setTitle("Command handler");
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setBounds(100, 100, 450, 315);
+		this.setResizable(false);
+		this.setContentPane(mainPanel);
+		this.setTitle("Command handler");
 		
 		mainPanel.setLayout(null);
 		
@@ -64,10 +59,19 @@ public class CommandUI {
 		mainPanel.add(inputTextField);
 	}
 	
+	private static CommandUI commandInterface;
+	
+	/**
+	 * @return static instance
+	 */
+	public static CommandUI getInstance() {
+		return (commandInterface == null ? (commandInterface = new CommandUI()) : commandInterface);
+	}
+	
 	/**
 	 * Adds listeners to our UI components
 	 */
-	private static void addListeners() {
+	private void addListeners() {
 		inputTextField.addActionListener(new ActionListener() {
 
 			@Override
@@ -86,27 +90,12 @@ public class CommandUI {
 	 * @param message
 	 * 			The message to add
 	 */
-	public static void push(String message) {
+	public void push(String message) {
 		if (historyTextArea.getText().length() <= 0) {
 			historyTextArea.setText(message);
 		} else {
 			historyTextArea.setText(historyTextArea.getText() + "\n" + message);
 		}
-	}
-	
-	/**
-	 * Sets our command UI to visible
-	 */
-	public static void initialize() {
-		initializeComponents();
-		addListeners();
-	}
-	
-	/**
-	 * Opens the main frame
-	 */
-	public static void open() {
-		mainFrame.setVisible(true);
 	}
 	
 }

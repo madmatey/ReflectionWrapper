@@ -5,22 +5,22 @@ import demmonic.Loader;
 import demmonic.container.reflect.ReflectionClass;
 import demmonic.ui.CommandUI;
 
-public class GetChatboxInterfaceCommand extends Command {
+public class GetInvOverlayCommand extends Command {
 
-	public GetChatboxInterfaceCommand() {
-		super("getchatboxinterface");
+	public GetInvOverlayCommand() {
+		super("getinvoverlay");
 	}
 
 	@Override
 	public void parse(String input) {
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
-
-		CommandUI.getInstance().push("open interface: " + client.getField("jm", "int").getValue());
+		
+		CommandUI.getInstance().push("open interface: " + client.getField("hW", "int").getValue());
 	}
 
 	@Override
 	public String getSyntax() {
-		return "getchatboxinterface";
+		return "getinvoverlay";
 	}
-	
+
 }

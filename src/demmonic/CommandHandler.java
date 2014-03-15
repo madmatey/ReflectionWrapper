@@ -30,12 +30,13 @@ public class CommandHandler {
 		if (input.split(" ").length <= 0)
 			return;
 		
+		CommandUI commandInterface = CommandUI.getInstance();
 		if (input.equals("help")) {
-			CommandUI.push("---Commands---");
+			commandInterface.push("---Commands---");
 			for (Command c : commands) {
-				CommandUI.push(c.getIdentifier() + " (" + c.getSyntax() + ")");
+				commandInterface.push(c.getIdentifier() + " (" + c.getSyntax() + ")");
 			}
-			CommandUI.push("");
+			commandInterface.push("");
 			return;
 		}
 		
@@ -48,7 +49,7 @@ public class CommandHandler {
 			}
 		}
 		
-		CommandUI.push("Unknown command " + identifier);
+		commandInterface.push("Unknown command " + identifier);
 	}
 	
 }

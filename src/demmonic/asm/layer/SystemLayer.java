@@ -1,5 +1,8 @@
 package demmonic.asm.layer;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 /**
  * Used to provide a layer of communication between the RT System class, and the client
  * @author Demmonic
@@ -7,6 +10,12 @@ package demmonic.asm.layer;
  */
 public class SystemLayer {
 
+	public static PrintStream out;
+	
+	static {
+		out = new PrintStream(new ByteArrayOutputStream());
+	}
+	
 	/**
 	 * @param name
 	 * 			The name of the property

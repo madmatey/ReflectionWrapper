@@ -6,7 +6,6 @@ import java.util.jar.JarInputStream;
 
 import demmonic.container.reflect.ReflectionClass;
 import demmonic.ui.AppletUI;
-import demmonic.ui.CommandUI;
 import demmonic.user.Server;
 import demmonic.util.ASMUtil;
 import demmonic.util.IOUtil;
@@ -33,7 +32,6 @@ public class Loader {
 	 * 			The server to load
 	 */
 	public Loader(Server server) {
-		CommandUI.initialize();
 		loadedServer = server;
 		
 		try {
@@ -57,7 +55,7 @@ public class Loader {
 		Applet applet = (Applet) loadedServer.getClientInstance();
 		applet.setStub(loadedServer.getStub());
 		
-		AppletUI.start(applet);
+		AppletUI.getInstance().start(applet);
 	}
 	
 	/**
@@ -66,6 +64,9 @@ public class Loader {
 	private void secure() {
 		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/asm/layer/SystemLayer");
 		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/asm/layer/RuntimeLayer");
+		
+		IOUtil.save(loader, "test.jar");
 	}
 	
 	/**

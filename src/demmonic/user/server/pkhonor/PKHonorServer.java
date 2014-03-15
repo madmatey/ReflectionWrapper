@@ -6,12 +6,14 @@ import java.io.InputStream;
 import demmonic.container.reflect.ReflectionClass;
 import demmonic.user.Server;
 import demmonic.user.server.pkhonor.command.GetChatboxInterfaceCommand;
+import demmonic.user.server.pkhonor.command.GetInvOverlayCommand;
 import demmonic.user.server.pkhonor.command.GetOpenInterfaceCommand;
 import demmonic.user.server.pkhonor.command.OpenChatboxInterfaceCommand;
 import demmonic.user.server.pkhonor.command.OpenInterfaceCommand;
 import demmonic.user.server.pkhonor.command.PushMessageCommand;
+import demmonic.user.server.pkhonor.command.SetInputCommand;
+import demmonic.user.server.pkhonor.command.SetInvOverlayCommand;
 import demmonic.user.server.pkhonor.command.SetUsernameCommand;
-import demmonic.user.server.pkhonor.command.SpamHelpCommand;
 
 /**
  * 
@@ -26,8 +28,10 @@ public class PKHonorServer extends Server {
 		add(new GetOpenInterfaceCommand());
 		add(new GetChatboxInterfaceCommand());
 		add(new OpenChatboxInterfaceCommand());
-		add(new SpamHelpCommand());
 		add(new SetUsernameCommand());
+		add(new SetInputCommand());
+		add(new SetInvOverlayCommand());
+		add(new GetInvOverlayCommand());
 	}
 	
 	@Override
