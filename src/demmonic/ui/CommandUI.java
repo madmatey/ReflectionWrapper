@@ -59,15 +59,6 @@ public class CommandUI extends JFrame {
 		mainPanel.add(inputTextField);
 	}
 	
-	private static CommandUI commandInterface;
-	
-	/**
-	 * @return static instance
-	 */
-	public static CommandUI getInstance() {
-		return (commandInterface == null ? (commandInterface = new CommandUI()) : commandInterface);
-	}
-	
 	/**
 	 * Adds listeners to our UI components
 	 */
@@ -96,6 +87,15 @@ public class CommandUI extends JFrame {
 		} else {
 			historyTextArea.setText(historyTextArea.getText() + "\n" + message);
 		}
+	}
+	
+	private static CommandUI commandInterface;
+	
+	/**
+	 * @return static instance
+	 */
+	public static CommandUI getInstance() {
+		return (commandInterface == null ? (commandInterface = new CommandUI()) : commandInterface);
 	}
 	
 }

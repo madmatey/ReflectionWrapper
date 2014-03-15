@@ -50,7 +50,7 @@ public class AppletMenuBar extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				InstanceTreeUI.open();
+				InstanceTreeUI.getInstance().open();
 			}
 			
 		});

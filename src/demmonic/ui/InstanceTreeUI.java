@@ -26,23 +26,23 @@ import demmonic.ui.node.InstanceTreeNode;
  * @author Demmonic
  *
  */
-public class InstanceTreeUI {
+public class InstanceTreeUI extends JFrame {
 
-	private static JFrame mainFrame;
-	private static JPanel mainPanel;
+	private static final long serialVersionUID = -4113136498519536627L;
+
+	private JPanel mainPanel;
 	
-	private static JScrollPane treeScrollPane;
+	private JScrollPane treeScrollPane;
 	
-	private static JTree tree;
-	private static DefaultTreeModel treeModel;
-	private static DefaultMutableTreeNode root;
+	private JTree tree;
+	private DefaultTreeModel treeModel;
+	private DefaultMutableTreeNode root;
 	
-	private static JPopupMenu nodeMenu;
-	private static JMenuItem loadMenuItem;
-	private static JMenuItem reloadMenuItem;
+	private JPopupMenu nodeMenu;
+	private JMenuItem loadMenuItem;
+	private JMenuItem reloadMenuItem;
 	
-	static {
-		mainFrame = new JFrame();
+	public InstanceTreeUI() {
 		mainPanel = new JPanel();
 		
 		root = new DefaultMutableTreeNode("root");
@@ -65,27 +65,27 @@ public class InstanceTreeUI {
 		mainPanel.add(treeScrollPane);
 		mainPanel.setPreferredSize(new Dimension(400, 400));
 		
-		mainFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		mainFrame.setResizable(false);
-		mainFrame.setContentPane(mainPanel);
-		mainFrame.setTitle("Instance explorer");
-		mainFrame.pack();
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setResizable(false);
+		this.setContentPane(mainPanel);
+		this.setTitle("Instance explorer");
+		this.pack();
 	}
 	
 	/**
 	 * Resets the tree and opens it
 	 */
-	public static void open() {
+	public void open() {
 		tree.setModel(treeModel = new DefaultTreeModel(root = new DefaultMutableTreeNode("root")));
 		root.add(new InstanceTreeNode("client", "client", Loader.getClientInstance()));
-		mainFrame.setVisible(true);
+		this.setVisible(true);
 	}
 	
 	/**
 	 * Represents the tree's right click handler
 	 * @author Demmonic
 	 */
-	private static class NodeListener extends MouseAdapter {
+	private class NodeListener extends MouseAdapter {
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
@@ -104,7 +104,7 @@ public class InstanceTreeUI {
 	 * Represents the node menu's load listener
 	 * @author Demmonic
 	 */
-	private static class LoadListener implements ActionListener {
+	private class LoadListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -135,7 +135,7 @@ public class InstanceTreeUI {
 	 * @author Demmonic
 	 *
 	 */
-	private static class ReloadListener implements ActionListener {
+	private class ReloadListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -163,6 +163,15 @@ public class InstanceTreeUI {
 			}
 		}
 		
+	}
+	
+	private static InstanceTreeUI treeInterface;
+	
+	/**
+	 * @return static instance
+	 */
+	public static InstanceTreeUI getInstance() {
+		return (treeInterface == null ? (treeInterface = new InstanceTreeUI()) : treeInterface);
 	}
 	
 }
