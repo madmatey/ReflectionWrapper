@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.user.Server;
+import demmonic.rwrapper.user.server.pkhonor.command.ClearCollisionFlagsCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.GetChatboxInterfaceCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.GetInvOverlayCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.GetOpenInterfaceCommand;
@@ -32,6 +33,7 @@ public final class PKHonorServer extends Server {
 		add(new SetInputCommand());
 		add(new SetInvOverlayCommand());
 		add(new GetInvOverlayCommand());
+		add(new ClearCollisionFlagsCommand());
 	}
 	
 	@Override
