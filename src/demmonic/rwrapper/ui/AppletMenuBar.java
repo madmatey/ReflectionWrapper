@@ -22,18 +22,18 @@ public final class AppletMenuBar extends JMenuBar {
 	private JMenuItem aboutMenuItem;
 	
 	private AppletMenuBar() {
-		viewMenu = new JMenu("View");
-		consoleMenuItem = new JMenuItem("Console");
-		explorerMenuItem = new JMenuItem("Explorer");
-		aboutMenuItem = new JMenuItem("About");
+		this.viewMenu = new JMenu("View");
+		this.consoleMenuItem = new JMenuItem("Console");
+		this.explorerMenuItem = new JMenuItem("Explorer");
+		this.aboutMenuItem = new JMenuItem("About");
 		
-		viewMenu.add(consoleMenuItem);
-		viewMenu.add(explorerMenuItem);
-		viewMenu.add(aboutMenuItem);
+		this.viewMenu.add(consoleMenuItem);
+		this.viewMenu.add(explorerMenuItem);
+		this.viewMenu.add(aboutMenuItem);
 		
 		this.add(viewMenu);
 		
-		addListeners();
+		this.addListeners();
 	}
 	
 	/**

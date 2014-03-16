@@ -18,7 +18,7 @@ public final class AppletUI extends JFrame {
 	private JPanel mainPanel;
 	
 	private AppletUI() {
-		mainPanel = new JPanel();
+		this.mainPanel = new JPanel();
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -26,8 +26,8 @@ public final class AppletUI extends JFrame {
 		this.setJMenuBar(AppletMenuBar.getInstance());
 		this.setTitle("Reflection Wrapper");
 		
-		mainPanel.setLayout(null);
-		mainPanel.setPreferredSize(new Dimension(765, 503));
+		this.mainPanel.setLayout(null);
+		this.mainPanel.setPreferredSize(new Dimension(765, 503));
 		
 		this.pack();
 	}

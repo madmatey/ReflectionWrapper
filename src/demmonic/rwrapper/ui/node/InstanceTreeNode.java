@@ -3,7 +3,7 @@ package demmonic.rwrapper.ui.node;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
- * Represents a instance node in a jtree
+ * Represents a instance node in a JTree
  * @author Demmonic
  *
  */

@@ -43,27 +43,27 @@ public final class InstanceTreeUI extends JFrame {
 	private JMenuItem reloadMenuItem;
 	
 	private InstanceTreeUI() {
-		mainPanel = new JPanel();
+		this.mainPanel = new JPanel();
 		
-		root = new DefaultMutableTreeNode("root");
-		treeModel = new DefaultTreeModel(root);
-		tree = new JTree(treeModel);
-		tree.addMouseListener(new NodeListener());
-		treeScrollPane = new JScrollPane(tree);
-		treeScrollPane.setBounds(0, 0, 400, 400);
+		this.root = new DefaultMutableTreeNode("root");
+		this.treeModel = new DefaultTreeModel(root);
+		this.tree = new JTree(treeModel);
+		this.tree.addMouseListener(new NodeListener());
+		this.treeScrollPane = new JScrollPane(tree);
+		this.treeScrollPane.setBounds(0, 0, 400, 400);
 		
-		loadMenuItem = new JMenuItem("Load");
-		loadMenuItem.addActionListener(new LoadListener());
-		reloadMenuItem = new JMenuItem("Reload");
-		reloadMenuItem.addActionListener(new ReloadListener());
+		this.loadMenuItem = new JMenuItem("Load");
+		this.loadMenuItem.addActionListener(new LoadListener());
+		this.reloadMenuItem = new JMenuItem("Reload");
+		this.reloadMenuItem.addActionListener(new ReloadListener());
 		
-		nodeMenu = new JPopupMenu("Node options");
-		nodeMenu.add(loadMenuItem);
-		nodeMenu.add(reloadMenuItem);
+		this.nodeMenu = new JPopupMenu("Node options");
+		this.nodeMenu.add(loadMenuItem);
+		this.nodeMenu.add(reloadMenuItem);
 		
-		mainPanel.setLayout(null);
-		mainPanel.add(treeScrollPane);
-		mainPanel.setPreferredSize(new Dimension(400, 400));
+		this.mainPanel.setLayout(null);
+		this.mainPanel.add(treeScrollPane);
+		this.mainPanel.setPreferredSize(new Dimension(400, 400));
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setResizable(false);
@@ -76,15 +76,11 @@ public final class InstanceTreeUI extends JFrame {
 	 * Resets the tree and opens it
 	 */
 	public void open() {
-		tree.setModel(treeModel = new DefaultTreeModel(root = new DefaultMutableTreeNode("root")));
-		root.add(new InstanceTreeNode("client", "client", Loader.getClientInstance()));
+		this.tree.setModel(treeModel = new DefaultTreeModel(root = new DefaultMutableTreeNode("root")));
+		this.root.add(new InstanceTreeNode("client", "client", Loader.getClientInstance()));
 		this.setVisible(true);
 	}
-	
-	/**
-	 * Represents the tree's right click handler
-	 * @author Demmonic
-	 */
+
 	private class NodeListener extends MouseAdapter {
 		
 		@Override
@@ -99,11 +95,7 @@ public final class InstanceTreeUI extends JFrame {
 		}
 		
 	}
-	
-	/**
-	 * Represents the node menu's load listener
-	 * @author Demmonic
-	 */
+
 	private class LoadListener implements ActionListener {
 
 		@Override
@@ -129,12 +121,7 @@ public final class InstanceTreeUI extends JFrame {
 		}
 		
 	}
-	
-	/**
-	 * Represents the node menu's reload listener
-	 * @author Demmonic
-	 *
-	 */
+
 	private class ReloadListener implements ActionListener {
 
 		@Override
