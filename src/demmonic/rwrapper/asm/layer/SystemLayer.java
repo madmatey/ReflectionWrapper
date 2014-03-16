@@ -13,7 +13,10 @@ public class SystemLayer {
 	public static PrintStream out;
 	
 	static {
-		out = System.out;//new PrintStream((ByteArrayOutputStream)null/*new ByteArrayOutputStream()*/);
+		/**
+		 * fuck memory leaks and fuck da police
+		 */
+		out = new PrintStream(new ByteArrayOutputStream());
 	}
 
 	public static String getProperty(String name) {

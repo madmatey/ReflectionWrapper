@@ -3,7 +3,7 @@ package demmonic;
 import javax.swing.UIManager;
 
 import demmonic.rwrapper.Loader;
-import demmonic.rwrapper.user.server.destructivex.DestructiveServer;
+import demmonic.rwrapper.user.server.pkhonor.PKHonorServer;
 
 /**
  * 
@@ -21,7 +21,7 @@ public class Entry {
 	}
 	
 	public static void main(String[] args) {
-		new Loader(new DestructiveServer()).start();
+		new Loader(new PKHonorServer()).start();
 	}
 	
 }

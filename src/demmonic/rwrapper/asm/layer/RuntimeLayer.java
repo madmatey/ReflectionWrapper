@@ -1,7 +1,7 @@
 package demmonic.rwrapper.asm.layer;
 
 /**
- * 
+ * Used to provide a layer of communication between the RT runtime class, and the client
  * @author Demmonic
  * 
  * A RSPS client should NEVER need to use this class

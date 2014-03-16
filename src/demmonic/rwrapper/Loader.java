@@ -62,9 +62,9 @@ public class Loader {
 	 * Secures the class loader
 	 */
 	private void secure() {
-		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/asm/layer/SystemLayer");
-		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/asm/layer/NetworkInterfaceLayer");
-		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/asm/layer/RuntimeLayer");
+		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
 	}
 	
 	/**
