@@ -39,7 +39,8 @@ import org.objectweb.asm.tree.AbstractInsnNode;
  */
 public class AnalyzerException extends Exception {
 
-    public final AbstractInsnNode node;
+	private static final long serialVersionUID = -1788355977291059681L;
+	public final AbstractInsnNode node;
 
     public AnalyzerException(final AbstractInsnNode node, final String msg) {
         super(msg);
