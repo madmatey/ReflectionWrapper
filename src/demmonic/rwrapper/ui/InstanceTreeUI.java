@@ -26,7 +26,7 @@ import demmonic.rwrapper.ui.node.InstanceTreeNode;
  * @author Demmonic
  *
  */
-public class InstanceTreeUI extends JFrame {
+public final class InstanceTreeUI extends JFrame {
 
 	private static final long serialVersionUID = -4113136498519536627L;
 
@@ -68,7 +68,7 @@ public class InstanceTreeUI extends JFrame {
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setResizable(false);
 		this.setContentPane(mainPanel);
-		this.setTitle("Instance explorer");
+		this.setTitle("Reflection Wrapper - Instance Explorer");
 		this.pack();
 	}
 	

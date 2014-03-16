@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * @author Demmonic
  *
  */
-public class ReflectionMethod {
+public final class ReflectionMethod {
 
 	private ReflectionClass owner;
 	private Method method;

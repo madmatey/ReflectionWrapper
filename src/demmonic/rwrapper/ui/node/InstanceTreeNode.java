@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Demmonic
  *
  */
-public class InstanceTreeNode extends DefaultMutableTreeNode {
+public final class InstanceTreeNode extends DefaultMutableTreeNode {
 
 	private static final long serialVersionUID = -7595118109311706911L;
 

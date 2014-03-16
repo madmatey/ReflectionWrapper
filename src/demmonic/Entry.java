@@ -10,7 +10,7 @@ import demmonic.rwrapper.user.server.pkhonor.PKHonorServer;
  * @author Demmonic
  *
  */
-public class Entry {
+public final class Entry {
 
 	static {
 		try {
@@ -23,5 +23,7 @@ public class Entry {
 	public static void main(String[] args) {
 		new Loader(new PKHonorServer()).start();
 	}
+	
+	private Entry() { }
 	
 }

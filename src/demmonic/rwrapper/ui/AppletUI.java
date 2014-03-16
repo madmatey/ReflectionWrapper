@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  * @author Demmonic
  *
  */
-public class AppletUI extends JFrame {
+public final class AppletUI extends JFrame {
 
 	private static final long serialVersionUID = -3869979711758848339L;
 	

@@ -18,7 +18,7 @@ import demmonic.rwrapper.util.IOUtil;
  * @author Demmonic
  *
  */
-public class Loader {
+public final class Loader {
 
 	/**
 	 * The loaded client's class loader

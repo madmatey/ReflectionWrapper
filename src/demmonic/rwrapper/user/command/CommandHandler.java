@@ -32,7 +32,7 @@ public final class CommandHandler {
 		
 		CommandUI commandInterface = CommandUI.getInstance();
 		if (input.equals("help")) {
-			commandInterface.push("---Commands---");
+			commandInterface.push("---commands---");
 			for (Command c : commands) {
 				commandInterface.push(c.getIdentifier() + " (" + c.getSyntax() + ")");
 			}

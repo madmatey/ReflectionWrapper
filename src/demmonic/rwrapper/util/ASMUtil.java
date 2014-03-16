@@ -15,7 +15,7 @@ import demmonic.rwrapper.container.asm.ClassNodeLoader;
  * @author Demmonic
  *
  */
-public class ASMUtil {
+public final class ASMUtil {
 
 	/**
 	 * @param c
@@ -67,5 +67,7 @@ public class ASMUtil {
 			swapReferences(cn, from, to);
 		}
 	}
+	
+	private ASMUtil() { }
 	
 }

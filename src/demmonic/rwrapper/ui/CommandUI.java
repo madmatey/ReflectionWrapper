@@ -17,7 +17,7 @@ import demmonic.rwrapper.user.command.CommandHandler;
  * @author Demmonic
  *
  */
-public class CommandUI extends JFrame {
+public final class CommandUI extends JFrame {
 
 	private static final long serialVersionUID = 6061578507543986183L;
 	
@@ -28,36 +28,30 @@ public class CommandUI extends JFrame {
 	private JTextField inputTextField;
 	
 	private CommandUI() {
-		initializeComponents();
-		addListeners();
-	}
-	
-	/**
-	 * Initializes our UI components
-	 */
-	private void initializeComponents() {
-		mainPanel = new JPanel();
+		this.mainPanel = new JPanel();
 		
 		this.historyTextArea = new JTextArea();
-		historyScrollPane = new JScrollPane(historyTextArea);
-		inputTextField = new JTextField();
+		this.historyScrollPane = new JScrollPane(historyTextArea);
+		this.inputTextField = new JTextField();
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setBounds(100, 100, 450, 315);
 		this.setResizable(false);
 		this.setContentPane(mainPanel);
-		this.setTitle("Command handler");
+		this.setTitle("Reflection Wrapper - Command Handler");
 		
-		mainPanel.setLayout(null);
+		this.mainPanel.setLayout(null);
 		
-		historyTextArea.setFont(new Font("Verdana", Font.PLAIN, 9));
-		historyTextArea.setEditable(false);
-		historyScrollPane.setBounds(0, 0, 444, 262);
-		mainPanel.add(historyScrollPane);
+		this.historyTextArea.setFont(new Font("Verdana", Font.PLAIN, 9));
+		this.historyTextArea.setEditable(false);
+		this.historyScrollPane.setBounds(0, 0, 444, 262);
+		this.mainPanel.add(historyScrollPane);
 		
-		inputTextField.setFont(new Font("Verdana", Font.PLAIN, 9));
-		inputTextField.setBounds(2, 264, 440, 21);
-		mainPanel.add(inputTextField);
+		this.inputTextField.setFont(new Font("Verdana", Font.PLAIN, 9));
+		this.inputTextField.setBounds(2, 264, 440, 21);
+		this.mainPanel.add(inputTextField);
+		
+		this.addListeners();
 	}
 	
 	/**

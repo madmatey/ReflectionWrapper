@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
  * @author Demmonic
  *
  */
-public class ReflectionField {
+public final class ReflectionField {
 
 	private ReflectionClass owner;
 	private Field field;

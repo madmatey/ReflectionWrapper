@@ -12,21 +12,24 @@ import javax.swing.JMenuItem;
  * @author Demmonic
  *
  */
-public class AppletMenuBar extends JMenuBar {
+public final class AppletMenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1528750029294526866L;
 	
-	private static JMenu viewMenu;
-	private static JMenuItem consoleMenuItem;
-	private static JMenuItem explorerMenuItem;
+	private JMenu viewMenu;
+	private JMenuItem consoleMenuItem;
+	private JMenuItem explorerMenuItem;
+	private JMenuItem aboutMenuItem;
 	
 	private AppletMenuBar() {
 		viewMenu = new JMenu("View");
 		consoleMenuItem = new JMenuItem("Console");
 		explorerMenuItem = new JMenuItem("Explorer");
+		aboutMenuItem = new JMenuItem("About");
 		
 		viewMenu.add(consoleMenuItem);
 		viewMenu.add(explorerMenuItem);
+		viewMenu.add(aboutMenuItem);
 		
 		this.add(viewMenu);
 		
@@ -51,6 +54,15 @@ public class AppletMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				InstanceTreeUI.getInstance().open();
+			}
+			
+		});
+		
+		aboutMenuItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AboutUI.getInstance().setVisible(true);
 			}
 			
 		});

@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Demmonic
  *
  */
-public class ReflectionClass {
+public final class ReflectionClass {
 
 	private Class<?> clazz;
 	private Object cached;

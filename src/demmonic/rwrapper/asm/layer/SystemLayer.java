@@ -7,8 +7,10 @@ import java.io.PrintStream;
  * Used to provide a layer of communication between the RT System class, and the client
  * @author Demmonic
  *
+ * The goal of this class is to disallow the client to grab 
+ * system properties (unless specified otherwise) and environment variables
  */
-public class SystemLayer {
+public final class SystemLayer {
 
 	public static PrintStream out;
 	
@@ -19,6 +21,7 @@ public class SystemLayer {
 		out = new PrintStream(new ByteArrayOutputStream());
 	}
 
+	private SystemLayer() { }
 	
 	//DUPLICATE METHODS FOR MIMICING THE SYSTEM CLASS IN THE RT LIBRARY
 	public static String getProperty(String name) {

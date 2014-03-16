@@ -23,7 +23,7 @@ import demmonic.rwrapper.container.asm.ClassNodeLoader;
  * @author Demmonic
  *
  */
-public class IOUtil {
+public final class IOUtil {
 
 	/**
 	 * @param file
@@ -122,5 +122,7 @@ public class IOUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	private IOUtil() { }
 	
 }

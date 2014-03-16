@@ -19,7 +19,7 @@ import org.objectweb.asm.tree.ClassNode;
  * @author Demmonic
  *
  */
-public class ClassNodeLoader extends ClassLoader {
+public final class ClassNodeLoader extends ClassLoader {
 	
 	/**
 	 * Class loader contents
