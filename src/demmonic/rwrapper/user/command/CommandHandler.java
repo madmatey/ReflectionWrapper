@@ -1,4 +1,4 @@
-package demmonic.rwrapper;
+package demmonic.rwrapper.user.command;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import demmonic.rwrapper.ui.CommandUI;
  * @author Demmonic
  *
  */
-public class CommandHandler {
+public final class CommandHandler {
 
 	private static ArrayList<Command> commands = new ArrayList<Command>();
 	
@@ -51,5 +51,7 @@ public class CommandHandler {
 		
 		commandInterface.push("Unknown command " + identifier);
 	}
+	
+	private CommandHandler() { }
 	
 }

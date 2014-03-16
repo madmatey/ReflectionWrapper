@@ -1,19 +1,19 @@
 package demmonic.rwrapper.user.server.pkhonor.command;
 
-import demmonic.rwrapper.Command;
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.ui.CommandUI;
+import demmonic.rwrapper.user.command.Command;
 
 /**
  * 
  * @author Demmonic
  *
  */
-public final class GetChatboxInterfaceCommand extends Command {
+public final class GetOpenChatboxInterfaceCommand extends Command {
 
-	public GetChatboxInterfaceCommand() {
-		super("getchatboxinterface");
+	public GetOpenChatboxInterfaceCommand() {
+		super("getopenchatboxinterface");
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public final class GetChatboxInterfaceCommand extends Command {
 
 	@Override
 	public String getSyntax() {
-		return "getchatboxinterface";
+		return "getopenchatboxinterface";
 	}
 	
 }

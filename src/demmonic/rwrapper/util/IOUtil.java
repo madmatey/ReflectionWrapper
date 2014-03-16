@@ -16,7 +16,7 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
-import demmonic.rwrapper.ClassNodeLoader;
+import demmonic.rwrapper.container.asm.ClassNodeLoader;
 
 /**
  * In/out utilities

@@ -17,7 +17,7 @@ public class AppletUI extends JFrame {
 	
 	private JPanel mainPanel;
 	
-	public AppletUI() {
+	private AppletUI() {
 		mainPanel = new JPanel();
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

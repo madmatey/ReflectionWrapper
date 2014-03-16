@@ -1,9 +1,9 @@
 package demmonic.rwrapper.user.server.destructivex.command;
 
-import demmonic.rwrapper.Command;
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.container.reflect.ReflectionMethod;
+import demmonic.rwrapper.user.command.Command;
 
 /**
  * 

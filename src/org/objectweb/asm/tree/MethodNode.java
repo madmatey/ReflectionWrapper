@@ -313,7 +313,10 @@ public class MethodNode extends MethodVisitor {
     @Override
     public AnnotationVisitor visitAnnotationDefault() {
         return new AnnotationNode(new ArrayList<Object>(0) {
-            @Override
+
+			private static final long serialVersionUID = 3618671528080057645L;
+
+			@Override
             public boolean add(final Object o) {
                 annotationDefault = o;
                 return super.add(o);
@@ -357,7 +360,8 @@ public class MethodNode extends MethodVisitor {
         return an;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public AnnotationVisitor visitParameterAnnotation(final int parameter,
             final String desc, final boolean visible) {
         AnnotationNode an = new AnnotationNode(desc);

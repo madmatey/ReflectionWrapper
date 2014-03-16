@@ -1,4 +1,4 @@
-package demmonic.rwrapper;
+package demmonic.rwrapper.user.command;
 
 /**
  *
@@ -10,7 +10,7 @@ public abstract class Command {
 	/**
 	 * This command's identifier
 	 */
-	private String identifier;
+	private final String identifier;
 
 	/**
 	 * @param identifier
@@ -23,7 +23,7 @@ public abstract class Command {
 	/**
 	 * @return This command's identifier
 	 */
-	public String getIdentifier() {
+	public final String getIdentifier() {
 		return identifier;
 	}
 	

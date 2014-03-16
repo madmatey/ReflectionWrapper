@@ -19,6 +19,8 @@ public class SystemLayer {
 		out = new PrintStream(new ByteArrayOutputStream());
 	}
 
+	
+	//DUPLICATE METHODS FOR MIMICING THE SYSTEM CLASS IN THE RT LIBRARY
 	public static String getProperty(String name) {
 		if (name.equals("user.home")) {
 			return System.getProperty(name);

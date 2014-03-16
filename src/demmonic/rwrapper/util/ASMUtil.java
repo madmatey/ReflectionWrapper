@@ -8,7 +8,7 @@ import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.TypeInsnNode;
 
-import demmonic.rwrapper.ClassNodeLoader;
+import demmonic.rwrapper.container.asm.ClassNodeLoader;
 
 /**
  * A set of objectweb ASM utilities

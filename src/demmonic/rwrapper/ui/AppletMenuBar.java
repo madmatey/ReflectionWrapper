@@ -20,7 +20,7 @@ public class AppletMenuBar extends JMenuBar {
 	private static JMenuItem consoleMenuItem;
 	private static JMenuItem explorerMenuItem;
 	
-	public AppletMenuBar() {
+	private AppletMenuBar() {
 		viewMenu = new JMenu("View");
 		consoleMenuItem = new JMenuItem("Console");
 		explorerMenuItem = new JMenuItem("Explorer");

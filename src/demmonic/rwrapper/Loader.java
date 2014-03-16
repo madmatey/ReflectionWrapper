@@ -4,9 +4,12 @@ import java.applet.Applet;
 import java.io.IOException;
 import java.util.jar.JarInputStream;
 
+import demmonic.rwrapper.container.asm.ClassNodeLoader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.ui.AppletUI;
 import demmonic.rwrapper.user.Server;
+import demmonic.rwrapper.user.command.Command;
+import demmonic.rwrapper.user.command.CommandHandler;
 import demmonic.rwrapper.util.ASMUtil;
 import demmonic.rwrapper.util.IOUtil;
 

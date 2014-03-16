@@ -6,11 +6,11 @@ import java.io.InputStream;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.user.Server;
 import demmonic.rwrapper.user.server.pkhonor.command.ClearCollisionFlagsCommand;
-import demmonic.rwrapper.user.server.pkhonor.command.GetChatboxInterfaceCommand;
+import demmonic.rwrapper.user.server.pkhonor.command.GetOpenChatboxInterfaceCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.GetInvOverlayCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.GetOpenInterfaceCommand;
-import demmonic.rwrapper.user.server.pkhonor.command.OpenChatboxInterfaceCommand;
-import demmonic.rwrapper.user.server.pkhonor.command.OpenInterfaceCommand;
+import demmonic.rwrapper.user.server.pkhonor.command.SetOpenChatboxInterfaceCommand;
+import demmonic.rwrapper.user.server.pkhonor.command.SetOpenInterfaceCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.PushMessageCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.SetInputCommand;
 import demmonic.rwrapper.user.server.pkhonor.command.SetInvOverlayCommand;
@@ -25,10 +25,10 @@ public final class PKHonorServer extends Server {
 
 	public PKHonorServer() {
 		add(new PushMessageCommand());
-		add(new OpenInterfaceCommand());
+		add(new SetOpenInterfaceCommand());
 		add(new GetOpenInterfaceCommand());
-		add(new GetChatboxInterfaceCommand());
-		add(new OpenChatboxInterfaceCommand());
+		add(new GetOpenChatboxInterfaceCommand());
+		add(new SetOpenChatboxInterfaceCommand());
 		add(new SetUsernameCommand());
 		add(new SetInputCommand());
 		add(new SetInvOverlayCommand());

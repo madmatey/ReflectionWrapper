@@ -1,18 +1,18 @@
 package demmonic.rwrapper.user.server.pkhonor.command;
 
-import demmonic.rwrapper.Command;
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
+import demmonic.rwrapper.user.command.Command;
 
 /**
  * 
  * @author Demmonic
  *
  */
-public final class OpenChatboxInterfaceCommand extends Command {
+public final class SetOpenInterfaceCommand extends Command {
 
-	public OpenChatboxInterfaceCommand() {
-		super("openchatboxinterface");
+	public SetOpenInterfaceCommand() {
+		super("setopeninterface");
 	}
 
 	@Override
@@ -21,12 +21,12 @@ public final class OpenChatboxInterfaceCommand extends Command {
 		
 		ReflectionClass client = Loader.getClass("pkhonor.Client");
 
-		client.getField("jm", "int").setValue(id);
+		client.getField("cL", "int").setValue(id);
 	}
 
 	@Override
 	public String getSyntax() {
-		return "openchatboxinterface interfaceid";
+		return "setopeninterface interfaceid";
 	}
-	
+
 }

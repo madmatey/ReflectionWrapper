@@ -1,8 +1,8 @@
 package demmonic.rwrapper.user.server.deob.command;
 
-import demmonic.rwrapper.Command;
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
+import demmonic.rwrapper.user.command.Command;
 
 /**
  * 

@@ -42,7 +42,7 @@ public class InstanceTreeUI extends JFrame {
 	private JMenuItem loadMenuItem;
 	private JMenuItem reloadMenuItem;
 	
-	public InstanceTreeUI() {
+	private InstanceTreeUI() {
 		mainPanel = new JPanel();
 		
 		root = new DefaultMutableTreeNode("root");

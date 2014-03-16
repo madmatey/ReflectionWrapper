@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import demmonic.rwrapper.CommandHandler;
+import demmonic.rwrapper.user.command.CommandHandler;
 
 /**
  * 
@@ -27,7 +27,7 @@ public class CommandUI extends JFrame {
 	private JTextArea historyTextArea;
 	private JTextField inputTextField;
 	
-	public CommandUI() {
+	private CommandUI() {
 		initializeComponents();
 		addListeners();
 	}

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import demmonic.rwrapper.ClassNodeLoader;
-import demmonic.rwrapper.Command;
+import demmonic.rwrapper.container.asm.ClassNodeLoader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
+import demmonic.rwrapper.user.command.Command;
 
 /**
  * 
@@ -27,7 +27,7 @@ public abstract class Server {
 	 * @param loader
 	 * 			This server's new class loader
 	 */
-	public void set(ClassNodeLoader loader) {
+	public final void set(ClassNodeLoader loader) {
 		this.loader = loader;
 	}
 	

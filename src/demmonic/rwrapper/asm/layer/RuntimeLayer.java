@@ -11,6 +11,7 @@ package demmonic.rwrapper.asm.layer;
  */
 public class RuntimeLayer {
 
+	//DUPLICATE METHODS FOR MIMICING THE RUNTIME CLASS IN THE RT LIBRARY
 	public static RuntimeLayer getRuntime() {
 		return new RuntimeLayer();
 	}

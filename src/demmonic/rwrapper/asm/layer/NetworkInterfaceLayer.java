@@ -4,7 +4,7 @@ import java.net.InetAddress;
 import java.util.Random;
 
 /**
- * Used to provide a layer of communication between the RT networkinterface class, and the client
+ * Used to provide a layer of communication between the RT network interface class, and the client
  * @author Demmonic
  *
  */
@@ -12,6 +12,7 @@ public class NetworkInterfaceLayer {
 
 	private static Random rand = new Random();
 
+	//DUPLICATE METHODS FOR MIMICING THE NETWORK INTERFACE CLASS IN THE RT LIBRARY
 	public static NetworkInterfaceLayer getByInetAddress(InetAddress addr) {
 		return new NetworkInterfaceLayer();
 	}
