@@ -26,6 +26,10 @@ public final class ASMUtil {
 	 * 			What to change the reference owner to
 	 */
 	public static void swapReferences(ClassNode c, String from, String to) {
+		if (c.superName.equals(from)) {
+			c.superName = to;
+		}
+		
 		for (MethodNode mn : c.methods) {
 			for (AbstractInsnNode ain : mn.instructions.toArray()) {
 				if (ain instanceof TypeInsnNode) {
@@ -65,6 +69,97 @@ public final class ASMUtil {
 	public static void swapReferences(ClassNodeLoader loader, String from, String to) {
 		for (ClassNode cn : loader.getAll()) {
 			swapReferences(cn, from, to);
+		}
+	}
+	
+	/**
+	 * @param cn
+	 * 			The class node to replace references in
+	 * @param methodOwner
+	 * 			The method owner to search for
+	 * @param methodDesc
+	 * 			The method description to search for
+	 * @param from
+	 * 			The method name to replace
+	 * @param to
+	 * 			What to replace the old method name with
+	 */
+	public static void swapMethodReferences(ClassNode cn, String methodOwner, String methodDesc, String from, String to) {
+		for (MethodNode mn : cn.methods) {
+			for (AbstractInsnNode ain : mn.instructions.toArray()) {
+				if (ain instanceof MethodInsnNode) {
+					MethodInsnNode min = (MethodInsnNode) ain;
+					
+					if (min.owner.equals(methodOwner)) {
+						if (min.desc.equals(methodDesc)) {
+							if (min.name.equals(from)) {
+								min.name = to;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * @param cn
+	 * 			The class node to replace references in
+	 * @param methodOwner
+	 * 			The method owner to search for
+	 * @param from
+	 * 			The method name to replace
+	 * @param to
+	 * 			What to replace the old method name with
+	 */
+	public static void swapMethodReferences(ClassNode cn, String methodOwner, String from, String to) {
+		for (MethodNode mn : cn.methods) {
+			for (AbstractInsnNode ain : mn.instructions.toArray()) {
+				if (ain instanceof MethodInsnNode) {
+					MethodInsnNode min = (MethodInsnNode) ain;
+					
+					if (min.owner.equals(methodOwner) || cn.superName.equals(methodOwner)) {
+						if (min.name.equals(from)) {
+							System.out.println("lol " + min.name);
+							min.name = to;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * @param cn
+	 * 			The class loader to replace references in
+	 * @param methodOwner
+	 * 			The method owner to search for
+	 * @param methodDesc
+	 * 			The method description to search for
+	 * @param from
+	 * 			The method name to replace
+	 * @param to
+	 * 			What to replace the old method name with
+	 */
+	public static void swapMethodReferences(ClassNodeLoader loader, String methodOwner, String methodDesc, String from, String to) {
+		for (ClassNode cn : loader.getAll()) {
+			swapMethodReferences(cn, methodOwner, methodDesc, from, to);
+		}
+	}
+	
+	/**
+	 * @param cn
+	 * 			The class loader to replace references in
+	 * @param methodOwner
+	 * 			The method owner to search for
+	 * @param from
+	 * 			The method name to replace
+	 * @param to
+	 * 			What to replace the old method name with
+	 */
+	public static void swapMethodReferences(ClassNodeLoader loader, String methodOwner, String from, String to) {
+		for (ClassNode cn : loader.getAll()) {
+			swapMethodReferences(cn, methodOwner, from, to);
 		}
 	}
 	
