@@ -24,4 +24,12 @@ public final class RuntimeLayer {
 		
 	}
 	
+	public long totalMemory() {
+		return Runtime.getRuntime().totalMemory();
+	}
+	
+	public long freeMemory() {
+		return Runtime.getRuntime().freeMemory();
+	}
+	
 }
