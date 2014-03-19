@@ -34,6 +34,10 @@ public final class SystemLayer {
 		return "";
 	}
 	
+	public static String setProperty(String name, String key) {
+		return System.setProperty(name, key);
+	}
+	
 	public static String getenv(String name) {
 		return "";
 	}
