@@ -123,6 +123,26 @@ public final class IOUtil {
 		}
 	}
 	
+	/**
+	 * @param cn
+	 * 			The class node to save
+	 * @param path
+	 * 			The path to save the jar at
+	 */
+	public static void save(ClassNode cn) {
+		try {
+			FileOutputStream out = new FileOutputStream("./dumpedclasses/" + cn.name + ".class");
+			ClassWriter cw = new ClassWriter(0);
+			cn.accept(cw);
+				
+			out.write(cw.toByteArray());
+			
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private IOUtil() { }
 	
 }
