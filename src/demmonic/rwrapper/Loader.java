@@ -4,6 +4,8 @@ import java.applet.Applet;
 import java.io.IOException;
 import java.util.jar.JarInputStream;
 
+import org.objectweb.asm.tree.ClassNode;
+
 import demmonic.rwrapper.container.asm.ClassNodeLoader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.ui.AppletUI;
@@ -41,7 +43,7 @@ public final class Loader {
 			loader = IOUtil.parseJar(new JarInputStream(loadedServer.getClient()));
 			loadedServer.set(loader);
 			
-			secure();
+			secure(loader);
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
@@ -62,15 +64,6 @@ public final class Loader {
 	}
 	
 	/**
-	 * Secures the class loader
-	 */
-	private void secure() {
-		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
-		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
-		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
-	}
-	
-	/**
 	 * @param name
 	 * 			The name of the class
 	 * @return The class matching the provided name
@@ -84,6 +77,36 @@ public final class Loader {
 	 */
 	public static Object getClientInstance() {
 		return loadedServer.getClientInstance();
+	}
+	
+	/**
+	 * Secures the provided class loader
+	 * 
+	 * @param loader
+	 * 			The loader to secure
+	 */
+	public static void secure(ClassNodeLoader loader) {
+		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
+		
+		ASMUtil.swapReferences(loader, "java/lang/ClassLoader", "demmonic/rwrapper/asm/layer/ClassLoaderLayer");
+		ASMUtil.swapMethodReferences(loader, "demmonic/rwrapper/asm/layer/ClassLoaderLayer", "defineClass", "ourDefineClass");
+	}
+	
+	/**
+	 * Secures the provided class node
+	 * 
+	 * @param cn
+	 * 			The class node to secure
+	 */
+	public static void secure(ClassNode cn) {
+		ASMUtil.swapReferences(cn, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(cn, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(cn, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
+		
+		ASMUtil.swapReferences(cn, "java/lang/ClassLoader", "demmonic/rwrapper/asm/layer/ClassLoaderLayer");
+		ASMUtil.swapMethodReferences(cn, "demmonic/rwrapper/asm/layer/ClassLoaderLayer", "defineClass", "ourDefineClass");
 	}
 	
 }
