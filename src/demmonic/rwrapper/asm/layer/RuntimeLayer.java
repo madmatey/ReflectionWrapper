@@ -16,12 +16,12 @@ public final class RuntimeLayer {
 		return new RuntimeLayer();
 	}
 	
-	public void exec(String cmd) {
-		
+	public Process exec(String cmd) {
+		return null;
 	}
 	
-	public void exec(String[] cmd) {
-		
+	public Process exec(String[] cmd) {
+		return null;
 	}
 	
 	public long totalMemory() {
