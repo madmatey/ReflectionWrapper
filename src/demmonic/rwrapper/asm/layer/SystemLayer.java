@@ -46,6 +46,10 @@ public final class SystemLayer {
 		return System.currentTimeMillis();
 	}
 
+	public static long nanoTime() {
+		return System.nanoTime();
+	}
+	
 	public static void gc() {
 		System.gc();
 	}
