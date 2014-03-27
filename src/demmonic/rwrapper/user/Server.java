@@ -1,6 +1,7 @@
 package demmonic.rwrapper.user;
 
 import java.applet.AppletStub;
+import java.awt.Dimension;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -97,6 +98,13 @@ public abstract class Server {
 	 */
 	public AppletStub getStub() {
 		return null;
+	}
+	
+	/**
+	 * @return This server's screen size
+	 */
+	public Dimension getSize() {
+		return new Dimension(765, 503);
 	}
 	
 }
