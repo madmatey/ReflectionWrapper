@@ -36,13 +36,15 @@ public final class AppletUI extends JFrame {
 	 * @param applet
 	 * 			The applet to start
 	 */
-	public void start(Applet applet) {
-		applet.setBounds(0, 0, 765, 503);
-		mainPanel.add(applet);
+	public void start(Applet applet, Dimension appletSize) {
+		applet.setBounds(0, 0, appletSize.width, appletSize.height);
 		
+		mainPanel.add(applet);
+		mainPanel.setPreferredSize(appletSize);
 		applet.init();
 		applet.start();
 		
+		this.pack();
 		this.setVisible(true);
 	}
 	

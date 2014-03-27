@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.jar.JarInputStream;
 
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldNode;
-
 import demmonic.rwrapper.container.asm.ClassNodeLoader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.ui.AppletUI;
@@ -45,15 +43,6 @@ public final class Loader {
 			loadedServer.set(loader);
 			
 			secure(loader);
-			IOUtil.save(loader, "./modified.jar");
-			
-			for (ClassNode cn : loader.getAll()) {
-				for (FieldNode fn : cn.fields) {
-					if (fn.desc.equals("La/afd;")) {
-						System.out.println(cn.name);
-					}
-				}
-			}
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
