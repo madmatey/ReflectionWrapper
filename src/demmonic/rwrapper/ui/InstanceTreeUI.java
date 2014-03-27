@@ -1,6 +1,6 @@
 package demmonic.rwrapper.ui;
 
-import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -61,12 +61,10 @@ public final class InstanceTreeUI extends JFrame {
 		this.nodeMenu.add(loadMenuItem);
 		this.nodeMenu.add(reloadMenuItem);
 		
-		this.mainPanel.setLayout(null);
+		this.mainPanel.setLayout(new GridLayout());
 		this.mainPanel.add(treeScrollPane);
-		this.mainPanel.setPreferredSize(new Dimension(400, 400));
 		
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		this.setResizable(false);
 		this.setContentPane(mainPanel);
 		this.setTitle("Reflection Wrapper - Instance Explorer");
 		this.pack();
@@ -115,6 +113,18 @@ public final class InstanceTreeUI extends JFrame {
 						if (value != null) {
 							n.add(new InstanceTreeNode(f.getName(), f.getName() + " - " + value, value));
 						}
+					}
+					
+					ReflectionClass parent = c.getSuper();
+					
+					while (!parent.getName().equalsIgnoreCase("java.lang.Object")) {
+						for (ReflectionField f : parent.getFields()) {
+							Object value = f.getValue();
+							if (value != null) {
+								n.add(new InstanceTreeNode(f.getName(), f.getName() + " - " + value, value));
+							}
+						}
+						parent = parent.getSuper();
 					}
 				}
 			}
