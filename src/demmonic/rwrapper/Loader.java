@@ -6,7 +6,7 @@ import java.util.jar.JarInputStream;
 
 import demmonic.rwrapper.container.asm.ClassNodeLoader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
-import demmonic.rwrapper.ui.AppletUI;
+import demmonic.rwrapper.ui.applet.AppletUI;
 import demmonic.rwrapper.user.ClientLoader;
 import demmonic.rwrapper.user.command.Command;
 import demmonic.rwrapper.user.command.CommandHandler;

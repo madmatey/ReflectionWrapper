@@ -71,7 +71,7 @@ public final class CommandUI extends JFrame {
 	}
 	
 	/**
-	 * Pushes a message to the history error
+	 * Pushes a message to the history console
 	 * 
 	 * @param message
 	 * 			The message to add

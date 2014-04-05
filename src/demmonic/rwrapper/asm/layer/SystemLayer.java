@@ -13,12 +13,14 @@ import java.io.PrintStream;
 public final class SystemLayer {
 
 	public static PrintStream out;
+	public static PrintStream err;
 	
 	static {
 		/**
 		 * fuck memory leaks and fuck da police
 		 */
 		out = new PrintStream(new ByteArrayOutputStream());
+		err = new PrintStream(new ByteArrayOutputStream());
 	}
 
 	private SystemLayer() { }

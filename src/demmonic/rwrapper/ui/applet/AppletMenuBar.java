@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui;
+package demmonic.rwrapper.ui.applet;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import demmonic.rwrapper.ui.AboutUI;
+import demmonic.rwrapper.ui.CommandUI;
+import demmonic.rwrapper.ui.explorer.InstanceTreeUI;
 
 /**
  * Represents the applet container's menu bar

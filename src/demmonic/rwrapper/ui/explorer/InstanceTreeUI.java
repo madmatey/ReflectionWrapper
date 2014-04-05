@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui;
+package demmonic.rwrapper.ui.explorer;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,6 @@ import javax.swing.tree.TreePath;
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
 import demmonic.rwrapper.container.reflect.ReflectionField;
-import demmonic.rwrapper.ui.node.InstanceTreeNode;
 
 /**
  * 
@@ -79,6 +78,11 @@ public final class InstanceTreeUI extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Used to handle node mouse actions
+	 * @author Demmonic
+	 *
+	 */
 	private class NodeListener extends MouseAdapter {
 		
 		@Override
@@ -94,6 +98,11 @@ public final class InstanceTreeUI extends JFrame {
 		
 	}
 
+	/**
+	 * Used to handle node loading
+	 * @author Demmonic
+	 *
+	 */
 	private class LoadListener implements ActionListener {
 
 		@Override
@@ -132,6 +141,11 @@ public final class InstanceTreeUI extends JFrame {
 		
 	}
 
+	/**
+	 * Used to handle node reloading
+	 * @author Demmonic
+	 *
+	 */
 	private class ReloadListener implements ActionListener {
 
 		@Override

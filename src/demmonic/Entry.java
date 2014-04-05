@@ -2,7 +2,7 @@ package demmonic;
 
 import javax.swing.UIManager;
 
-import demmonic.rwrapper.ui.LoaderSelectorUI;
+import demmonic.rwrapper.ui.loader.LoaderSelectorUI;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui;
+package demmonic.rwrapper.ui.applet;
 
 import java.applet.Applet;
 import java.awt.Dimension;

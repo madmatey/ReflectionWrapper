@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui;
+package demmonic.rwrapper.ui.loader;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -27,6 +27,7 @@ public class LoaderSelectionNode extends JPanel implements ActionListener {
 	private JButton startButton;
 	
 	/**
+	 * @param parent
 	 * @param name
 	 */
 	public LoaderSelectionNode(LoaderSelectorUI parent, String name) {

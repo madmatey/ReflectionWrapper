@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui.node;
+package demmonic.rwrapper.ui.explorer;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

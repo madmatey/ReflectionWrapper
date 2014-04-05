@@ -1,4 +1,4 @@
-package demmonic.rwrapper.ui;
+package demmonic.rwrapper.ui.loader;
 
 import java.awt.GridLayout;
 

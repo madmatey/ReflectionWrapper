@@ -16,12 +16,12 @@ public final class RuntimeLayer {
 		return new RuntimeLayer();
 	}
 	
-	public Process exec(String cmd) {
-		return null;
+	public ProcessLayer exec(String cmd) {
+		return new ProcessLayer();
 	}
 	
-	public Process exec(String[] cmd) {
-		return null;
+	public ProcessLayer exec(String[] cmd) {
+		return  new ProcessLayer();
 	}
 	
 	public long totalMemory() {
@@ -30,6 +30,14 @@ public final class RuntimeLayer {
 	
 	public long freeMemory() {
 		return Runtime.getRuntime().freeMemory();
+	}
+	
+	public long maxMemory() {
+		return Runtime.getRuntime().maxMemory();
+	}
+
+	public int availableProcessors() {
+		return Runtime.getRuntime().availableProcessors();
 	}
 	
 }
