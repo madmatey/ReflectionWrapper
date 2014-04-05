@@ -26,6 +26,48 @@ public final class ASMUtil {
 	 * @param to
 	 * 			What to change the reference owner to
 	 */
+	public static void swapSuperReferences(ClassNode c, String from, String to) {
+		if (c.superName.equals(from)) {
+			c.superName = to;
+		}
+		
+		for (MethodNode mn : c.methods) {
+			for (AbstractInsnNode ain : mn.instructions.toArray()) {
+				if (ain instanceof MethodInsnNode) {
+					MethodInsnNode min = (MethodInsnNode) ain;
+					if (min.name.equals("<init>")) {
+						if (min.owner.equals(from)) {
+							min.owner = to;
+						}
+						min.desc = min.desc.replace("L" + from + ";", "L" + to + ";");
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * @param loader
+	 * 			The loader to modify references in
+	 * @param from
+	 * 			The reference owner to change
+	 * @param to
+	 * 			What to change the reference owner to
+	 */
+	public static void swapSuperReferences(ClassNodeLoader loader, String from, String to) {
+		for (ClassNode cn : loader.getAll()) {
+			swapSuperReferences(cn, from, to);
+		}
+	}
+	
+	/**
+	 * @param c
+	 * 			The class node to modify references in
+	 * @param from
+	 * 			The reference owner to change
+	 * @param to
+	 * 			What to change the reference owner to
+	 */
 	public static void swapReferences(ClassNode c, String from, String to) {
 		if (c.superName.equals(from)) {
 			c.superName = to;
@@ -172,6 +214,38 @@ public final class ASMUtil {
 		for (ClassNode cn : loader.getAll()) {
 			swapMethodReferences(cn, methodOwner, from, to);
 		}
+	}
+	
+	/**
+	 * Secures the provided class loader
+	 * 
+	 * @param loader
+	 * 			The loader to secure
+	 */
+	public static void secure(ClassNodeLoader loader) {
+		ASMUtil.swapReferences(loader, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(loader, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(loader, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
+		ASMUtil.swapReferences(loader, "java/lang/Process", "demmonic/rwrapper/asm/layer/ProcessLayer");
+		
+		ASMUtil.swapSuperReferences(loader, "java/lang/ClassLoader", "demmonic/rwrapper/asm/layer/ClassLoaderLayer");
+		ASMUtil.swapMethodReferences(loader, "demmonic/rwrapper/asm/layer/ClassLoaderLayer", "defineClass", "ourDefineClass");
+	}
+	
+	/**
+	 * Secures the provided class node
+	 * 
+	 * @param cn
+	 * 			The class node to secure
+	 */
+	public static void secure(ClassNode cn) {
+		ASMUtil.swapReferences(cn, "java/lang/System", "demmonic/rwrapper/asm/layer/SystemLayer");
+		ASMUtil.swapReferences(cn, "java/net/NetworkInterface", "demmonic/rwrapper/asm/layer/NetworkInterfaceLayer");
+		ASMUtil.swapReferences(cn, "java/lang/Runtime", "demmonic/rwrapper/asm/layer/RuntimeLayer");
+		ASMUtil.swapReferences(cn, "java/lang/Process", "demmonic/rwrapper/asm/layer/ProcessLayer");
+		
+		ASMUtil.swapSuperReferences(cn, "java/lang/ClassLoader", "demmonic/rwrapper/asm/layer/ClassLoaderLayer");
+		ASMUtil.swapMethodReferences(cn, "demmonic/rwrapper/asm/layer/ClassLoaderLayer", "defineClass", "ourDefineClass");
 	}
 	
 	private ASMUtil() { }
