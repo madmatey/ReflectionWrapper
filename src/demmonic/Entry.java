@@ -2,8 +2,7 @@ package demmonic;
 
 import javax.swing.UIManager;
 
-import demmonic.rwrapper.Loader;
-import demmonic.rwrapper.user.server.bsloader.BSLoaderServer;
+import demmonic.rwrapper.ui.LoaderSelectorUI;
 
 /**
  * 
@@ -21,7 +20,7 @@ public final class Entry {
 	}
 	
 	public static void main(String[] args) {
-		new Loader(new BSLoaderServer()).start();
+		LoaderSelectorUI.getInstance().setVisible(true);
 	}
 	
 	private Entry() { }
