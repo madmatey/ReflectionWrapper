@@ -6,7 +6,7 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
-import demmonic.rwrapper.Loader;
+import demmonic.rwrapper.util.ASMUtil;
 
 /**
  * 
@@ -26,7 +26,7 @@ public class ClassLoaderLayer extends ClassLoader {
 		ClassNode cn = new ClassNode();
 		cr.accept(cn, 0);
 		
-		Loader.secure(cn);
+		ASMUtil.secure(cn);
 		
 		ClassWriter cw = new ClassWriter(0);
 		cn.accept(cw);
