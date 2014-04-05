@@ -1,6 +1,10 @@
 package demmonic.rwrapper.container.asm;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.security.AllPermission;
 import java.security.CodeSource;
@@ -10,7 +14,10 @@ import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.jar.JarInputStream;
+import java.util.zip.ZipEntry;
 
+import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
@@ -36,6 +43,67 @@ public final class ClassNodeLoader extends ClassLoader {
 	 */
 	public void addClass(ClassNode cn) {
 		classes.put(cn.name.replace("/", "."), cn);
+	}
+	
+	/**
+	 * Adds a file to this class loader
+	 * 
+	 * @param file
+	 */
+	public void add(File file) {
+		try {
+			ByteArrayOutputStream store = new ByteArrayOutputStream();
+			FileInputStream in = new FileInputStream(file);
+			int length;
+			byte[] buffer = new byte[4816];
+			while ((length = in.read(buffer)) > 0) {
+				store.write(buffer, 0, length);
+			}
+			if (file.getName().endsWith(".class")) {
+				ClassReader cr = new ClassReader(store.toByteArray());
+				ClassNode cn = new ClassNode();
+				cr.accept(cn, 0);
+				addClass(cn);
+			} else if (file.getName().endsWith(".jar")) {
+				add(new JarInputStream(new FileInputStream(file)));
+			} else {
+				addResource(file.getName(), store.toByteArray());
+			}
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Adds all files from the provided input stream to this class loader
+	 * 
+	 * @param in
+	 */
+	public void add(JarInputStream in) {
+		try {
+			ZipEntry e;
+			while ((e = in.getNextEntry()) != null) {
+				ByteArrayOutputStream byteStore = new ByteArrayOutputStream();
+
+				byte buffer[] = new byte[4096];
+				int length;
+				while ((length = in.read(buffer)) != -1) {
+					byteStore.write(buffer, 0, length);
+				}
+				
+				if (e.getName().endsWith(".class")) {
+					ClassReader cr = new ClassReader(byteStore.toByteArray());
+					ClassNode cn = new ClassNode();
+					cr.accept(cn, 0);
+					addClass(cn);
+				} else {
+					addResource(e.getName(), byteStore.toByteArray());
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
