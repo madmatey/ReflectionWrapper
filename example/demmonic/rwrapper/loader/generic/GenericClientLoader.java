@@ -1,11 +1,11 @@
-package demmonic.rwrapper.loader.pkhonor;
+package demmonic.rwrapper.loader.generic;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import demmonic.rwrapper.container.reflect.ReflectionClass;
-import demmonic.rwrapper.loader.pkhonor.command.TestCommand;
+import demmonic.rwrapper.loader.generic.command.TestCommand;
 import demmonic.rwrapper.user.ClientLoader;
 
 /**

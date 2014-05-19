@@ -1,4 +1,4 @@
-package demmonic.rwrapper.loader.pkhonor.command;
+package demmonic.rwrapper.loader.generic.command;
 
 import demmonic.rwrapper.Loader;
 import demmonic.rwrapper.container.reflect.ReflectionClass;
