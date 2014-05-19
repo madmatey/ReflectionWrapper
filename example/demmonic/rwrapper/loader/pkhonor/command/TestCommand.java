@@ -12,9 +12,6 @@ import demmonic.rwrapper.user.command.Command;
  */
 public final class TestCommand extends Command {
 
-	/**
-	 * @param identifier
-	 */
 	public TestCommand() {
 		super("test");
 	}
