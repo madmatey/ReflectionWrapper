@@ -22,7 +22,7 @@ public class GenericClientLoader extends ClientLoader {
 	@Override
 	public InputStream getClient() {
 		try {
-			return new FileInputStream("./data/genericclient.jar");
+			return new FileInputStream("C:\Users\Martijn\Desktop");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
