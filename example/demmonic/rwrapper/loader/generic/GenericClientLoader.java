@@ -22,7 +22,7 @@ public class GenericClientLoader extends ClientLoader {
 	@Override
 	public InputStream getClient() {
 		try {
-			return new FileInputStream("C:\Users\Martijn\Desktop\salusscape.jar");
+			return new FileInputStream("C:\Users\Martijn\Desktop\salus.jar");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
